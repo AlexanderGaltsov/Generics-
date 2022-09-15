@@ -1,4 +1,6 @@
-public class MagicBox <T> {
+import java.util.Random;
+
+public class MagicBox<T> {
 
 
     private int maxAmount;
@@ -22,10 +24,22 @@ public class MagicBox <T> {
         }
         return false;
     }
-    public void print(){
-        for (int i = 0; i < items.length; i++){
+
+    public void print() {
+        for (int i = 0; i < items.length; i++) {
             System.out.print(items[i] + " ");
-            }
+        }
         System.out.println();
+    }
+
+    public T pick() {
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] == null)
+                throw new RuntimeException
+                        ("Ячейки коробки ещё не заполнины, осталось заполнить" + (maxAmount - i));
+        }
+        Random random = new Random();
+        int randomInt = random.nextInt(items.length);
+        return items[randomInt];
     }
 }
