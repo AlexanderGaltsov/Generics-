@@ -4,7 +4,8 @@ public class MagicBox<T> {
 
 
     private int maxAmount;
-    T[] items;
+    protected T[] items;
+    Random random = new Random();
 
     public MagicBox(int maxAmount) {
         this.maxAmount = maxAmount;
@@ -38,7 +39,6 @@ public class MagicBox<T> {
                 throw new RuntimeException
                         ("Ячейки коробки ещё не заполнины, осталось заполнить" + (maxAmount - i));
         }
-        Random random = new Random();
         int randomInt = random.nextInt(items.length);
         return items[randomInt];
     }
